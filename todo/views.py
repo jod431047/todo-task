@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from models import Todo
-from models import generic
+from .models import Todo
+from django.views import generic
+
+
 
 # Create your views here.
 
@@ -9,4 +11,4 @@ class TodoList(generic.ListView):
     
     
 class TodoDetail(generic.DetailView):
-    model = Todo    
+    model = Todo
