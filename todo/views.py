@@ -28,4 +28,9 @@ class TodoEdit(generic.UpdateView):
     templates_name = 'todo/edit.html'
     
     
+class TodoDelete(generic.DeleteView):
+    model = Todo
+    success_url = '/todo/'
+    
+    
     
