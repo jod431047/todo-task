@@ -12,3 +12,20 @@ class TodoList(generic.ListView):
     
 class TodoDetail(generic.DetailView):
     model = Todo
+    
+    
+class TodoCreate(generic.CreateView):
+    model = Todo
+    fields = ['name','description','status']
+    success_url = '/todo/'
+    
+    
+    
+class TodoEdit(generic.UpdateView):
+    model = Todo
+    fields = ['name','description','status']
+    success_url = '/todo/'
+    templates_name = 'todo/edit.html'
+    
+    
+    
