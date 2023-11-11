@@ -2,6 +2,11 @@ from django.shortcuts import render
 from .models import Todo
 from django.views import generic
 
+#def-function for viewjs
+def todo_list(request):
+    
+    return render(request,'todo/vue.html')
+
 
 
 # Create your views here.
