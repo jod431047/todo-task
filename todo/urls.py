@@ -1,17 +1,15 @@
 from django.urls import path
 from .views import TodoList,TodoDetail,TodoCreate,TodoEdit,TodoDelete
-from todo.api import TodoListAPI 
-from todo.api import  TodoDetailAPI
+from todo.api import  TodoViewsets
+from rest_framework.routers import DefaultRouter
+from django.urls.conf import include
 
 
 app_name='todo'
-
+router = DefaultRouter()
+router.register('',TodoViewsets)
 
 urlpatterns = [
-     #urls api
-    path('todo/api/list',TodoListAPI.as_view()),
-    path('todo/api/<int:pk>',TodoDetailAPI.as_view()),
-    
      
      #html urls
     path('new', TodoCreate.as_view()),
@@ -19,6 +17,6 @@ urlpatterns = [
     path('<int:pk>', TodoDetail.as_view()),
     path('<int:pk>/edit', TodoEdit.as_view()),
     path('<int:pk>/delete', TodoDelete.as_view()),
-   
+    path('api/', include(router.urls))
     
     ]
