@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'todo',
     'rest_framework',
     'django_filters',
-    "django_bootstrap5",
+    'django_bootstrap5',
+    
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 ROOT_URLCONF = 'project.urls'
 

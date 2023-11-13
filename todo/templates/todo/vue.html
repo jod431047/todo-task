@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container my-5">
+    <div class="container my-5" id="app">
         <div class="row">
             <div class="col-lg-6 shadow rounded-5 mx-auto">
                 <h3 class="text-center fw-bold font-monospace text-danger-emphasis">Python APP</h3>
@@ -35,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr v-for="todo in todo_list">
                             <th scope="row">1</th>
-                            <td>Mark</td>
+                            <td>${todo.}</td>
                             <td>Otto</td>
                             <td>@mdo</td>
                         </tr>
@@ -79,9 +79,40 @@
             </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+       
+        <script type="text/javascript">
+
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName =  'X-CSRFTOKEN'
+
+
+
+            var app = new Vue({
+                el: '#app',
+                delimiters:['${','}'],
+                data:{
+                    todo_list : [],
+                },
+                mounted(){
+                    this.get_todo();
+                },
+                methods: {
+                    get_todo:function(){
+                        axios.get('/todo/api/').then((response)=>{
+                            this.todo_list = response.data
+                        })
+
+                    },
+                },
+
+            })
+                       
+        </script>
 </body>
 
 </html>
