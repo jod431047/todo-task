@@ -7,7 +7,7 @@ class TodoFilter(filters.FilterSet):
         model = Todo
         fields ={
             'status': ['exact'],
-            'id' : ['range'],
+            'id' : ['range','lte','gte'],
             'name' : ['contains'],
             'description' : ['contains'],
         }
