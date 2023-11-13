@@ -55,8 +55,14 @@ MIDDLEWARE = [
     
 ]
 
+
+
+
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'], #filter
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',  #Pagination
+    'PAGE_SIZE': 1  
 }
 
 ROOT_URLCONF = 'project.urls'

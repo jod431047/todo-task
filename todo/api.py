@@ -12,7 +12,7 @@ class TodoViewsets(viewsets.ModelViewSet):
     serializer_class = TodoSerializers
     
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend,filters.OrderingFilter]
     # filterset_fields = ['description', 'name','status']
     
     
@@ -21,7 +21,7 @@ class TodoViewsets(viewsets.ModelViewSet):
     
     
     # filter_backends = [filters.OrderingFilter]
-    # ordering_fields = ['id']
+    ordering_fields = ['id']
     
     filterset_class =  TodoFilter
 
